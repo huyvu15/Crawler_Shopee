@@ -72,7 +72,7 @@ params = {
   "variation_filters": 'null'
 }
 
-response = requests.get('https://shopee.vn/api/v2/item/get_ratings?exclude_filter=0&filter=0&filter_size=0&flag=1&fold_filter=0&itemid=21629119012&limit=6&offset=0&relevant_reviews=false&request_source=1&shopid=81075907&tag_filter=&type=0&variation_filters=', headers=headers, params=params)
+response = requests.get('https://shopee.vn/api/v2/item/get_ratings', headers=headers, params=params)
 reviews = response.json().get('data').get('ratings')
 
 output_reviews = []

@@ -76,7 +76,7 @@ dem = 0
 for i, j in read_file('product_id1.csv'):
     params['shop_id'] = j
     params['item_id'] = i
-    response = requests.get(f'https://shopee.vn/api/v4/pdp/get_pc?shop_id={j}&item_id={i}', headers=headers, params=params,cookies=cookies)
+    response = requests.get(f'https://shopee.vn/api/v4/pdp/get_pc', headers=headers, params=params,cookies=cookies)
     print(response.status_code)
     if response.status_code == 200:
         data = response.json()
