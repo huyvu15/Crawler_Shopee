@@ -55,7 +55,6 @@ def read_file(file_path):
     return zip(val1, val2) 
 
 params = {
-
   "exclude_filter": 0,
   "filter": 0,
   "filter_size": 0,
