@@ -1,47 +1,104 @@
-def findSubstring(s, k):
-    a = []
-    text = ['a', 'e', 'i', 'o', 'u']
-    for i in range(len(s)-k+1):
-        b = ""
-        for j in range(i, i+k):
-            b += s[j].lower()
-        a.append(b)
-    c = []
-    for i in a:
-        count = 0
-        for j in i:
-            if j in text:
-                count += 1
-            else:
-                break
-        c.append(count)
-    max_count = max(c)
-    max_string = a[c.index(max_count)]
-    return max_string
+class MyClass:
+    def __new__(cls, *args, **kwargs):
+        print("Tạo một thể hiện mới")
+        instance = super(MyClass, cls).__new__(cls)
+        return instance
 
-def count_vowels(substring):
-    vowels = {'a', 'e', 'i', 'o', 'u'}
-    return sum(1 for char in substring if char in vowels)
+    def __init__(self, value):
+        print("Khởi tạo thể hiện")
+        self.value = value
 
-def findSubstring(s, k):
-    if not any(char in {'a', 'e', 'i', 'o', 'u'} for char in s):
-        return 'Not found!'
+# obj = MyClass(10)
 
-    max_vowel_count = 0
-    max_vowel_substring = ''
 
-    for i in range(len(s) - k + 1):
-        substring = s[i:i+k]
-        vowel_count = count_vowels(substring)
+class IntClass:
+    def __init__(self, value):
+        self.value = value
 
-        if vowel_count > max_vowel_count:
-            max_vowel_count = vowel_count
-            max_vowel_substring = substring
+    def __int__(self):
+        return int(self.value)
 
-    return max_vowel_substring
-    
-s = 'azerdii'
-k = 5
+# obj = IntClass(3.14)
+# result = int(obj)
+# print(result)
 
-findSubstring(s, k)
-print(findSubstring(s, k))
+
+class ContainerClass:
+    def __init__(self, values):
+        self.values = values
+
+    def __contains__(self, item):
+        return item in self.values
+
+obj = ContainerClass([1, 2, 3, 4, 5])
+# print(3 in obj)
+
+
+
+
+
+class CallableClass:
+    def __call__(self, x):
+        return x * x
+
+obj = CallableClass()
+
+result = obj(5)
+
+# print(result)  
+
+
+
+class EqClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+obj1 = EqClass(42)
+obj2 = EqClass(42)
+# print(obj1 == obj2)
+
+
+
+
+class BoolClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __bool__(self):
+        return self.value > 0
+
+obj = BoolClass(42)
+# print(bool(obj)) 
+
+
+
+class AddClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return AddClass(self.value + other.value)
+
+obj1 = AddClass(10)
+obj2 = AddClass(20)
+result = obj1 + obj2
+# print(result.value)  
+
+
+
+class NeClass:
+    def __init__(self, value):
+        self.value = value
+
+    def __eq__(self, other):
+        return self.value == other.value
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+obj1 = NeClass(42)
+obj2 = NeClass(42)
+print(obj1 != obj2) 
