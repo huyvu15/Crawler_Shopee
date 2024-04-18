@@ -9,7 +9,7 @@ class MyClass:
         self.value = value
 
 # obj = MyClass(10)
-
+import requests
 
 class IntClass:
     def __init__(self, value):
